@@ -1,0 +1,68 @@
+body{
+    background: #e0f5ff;
+    font-family:arial;
+  }
+  
+  .button-73{
+    background-color:#e0f5ff;
+    border-color: transparent;
+  }
+  .click {
+    height:350px;
+  }
+  
+  .long {
+    width:750px;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .short {
+    width: 371px;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .inline{
+    display: inline;
+  }
+  
+  .small {
+    width: 150px;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .bottom{
+  position: absolute; bottom: 0;
+  }
+  .hint{
+    position:100px 100px;
+  }
+  
+  .right{
+  position:absolute; right:0;
+  }
+  .top{
+  position:absolute; top:0;
+  }
+  

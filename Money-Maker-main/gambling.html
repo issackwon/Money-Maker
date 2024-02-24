@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="gambling.css">
+    <link rel="stylesheet" type="text/css" href="real.css">
+    <link rel="stylesheet" type="text/css" href="betting.css">
+    <style>
+        #roulette {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 2px solid #000;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+            transition: transform 2s ease-out;
+        }
+
+        .division {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            z-index: 1;
+            top: 0%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+        }
+
+        .division:nth-child(1) { border-width: 150px 75px 0; border-color: #FF99B4 transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(0deg); }
+        .division:nth-child(2) { border-width: 150px 75px 0; border-color: #66A3E0 transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(45deg); }
+        .division:nth-child(3) { border-width: 150px 75px 0; border-color: #8EE6B4 transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(90deg); }
+        .division:nth-child(4) { border-width: 150px 75px 0; border-color: #FFEC8B transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(135deg); }
+        .division:nth-child(5) { border-width: 150px 75px 0; border-color: #B39EDB transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(180deg); }
+        .division:nth-child(6) { border-width: 150px 75px 0; border-color: #FFC07F transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(225deg); }
+        .division:nth-child(7) { border-width: 150px 75px 0; border-color: #D3D3D3 transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(270deg); }
+        .division:nth-child(8) { border-width: 150px 75px 0; border-color: #FFA07A transparent transparent transparent; transform-origin: 50% 100%; transform: rotate(315deg); }
+    </style>
+</head>
+<body>
+
+<div id="roulette">
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+</div>
+
+<div id="result" style="text-align: center; font-size: 20px; margin-top: 20px;"></div><br><br>
+<div class="login-page">
+    <div class="form">
+        <input id="betting" type="text" placeholder="Betting Money"/>
+        <button class=button-74 onclick="spinRoulette()">Spin</button></center>
+    </div>
+  </div>
+
+
+<script>
+    function spinRoulette() {
+        var roulette = document.getElementById('roulette');
+        var resultElement = document.getElementById('result');
+
+        var outcome = Math.floor(Math.random() * 8) + 1;
+        var angle = 360 * 5 + (360 / 8) * outcome*10;
+
+        roulette.style.transform = `rotate(${angle}deg)`;
+
+        var money = document.getElementById('betting').value;
+        var val = parseInt(localStorage.getItem("bank_val")) || 0;
+        console.log(val);
+        if (outcome%2 == 0){
+            val=val+outcome*money;
+            setTimeout(function () {
+            resultElement.textContent = `+${outcome*money}`;
+        }, 2000);
+        }
+        else {
+            val=val-(outcome+1)*money;
+            setTimeout(function () {
+            resultElement.textContent = `Don't Gamble kids -${outcome*money}`;
+        }, 2000);
+        }
+        console.log(val);
+        localStorage.setItem("bank_val", val);
+
+
+
+    }
+</script>
+<a href="index.html"><button class="margin hint button-74">Back</button></a>
+</body>
+</html>
